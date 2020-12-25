@@ -19,7 +19,8 @@
   },
   "homepage": "https://github.com/micro-kid/axios#readme",
   "dependencies": {
-    "axios": "^0.21.1"
+    "axios": "^0.21.1",
+    "qs": "^6.9.4"
   },
   "devDependencies": {
     "clean-webpack-plugin": "^3.0.0",

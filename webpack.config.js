@@ -2,6 +2,7 @@ const glob = require("glob");
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const { exec } = require('child_process')
 
 // 读取src目录所有入口
 function getEntry() {
@@ -16,7 +17,16 @@ function getEntry() {
 };
 
 module.exports = env => {
-  
+  if (env.NODE_ENV === 'development') {
+    exec('cd ./app && yarn dev', (error, stdout, stderr) => {
+      if (error) {
+        console.error(`执行的错误: ${error}`);
+        return;
+      }
+      console.log(`stdout: ${stdout}`);
+      console.error(`stderr: ${stderr}`);
+    })
+  }
   const webpackConfig = {
     mode: env.NODE_ENV,
     entry: getEntry(),
@@ -27,8 +37,11 @@ module.exports = env => {
     plugins: [],
     devServer: {
       host: 'localhost',
-      port: 9000
-    },
+      port: 9000,
+      proxy: {
+        '/api': 'http://localhost:3000'
+      }
+    }
   }
 
   // 给每个出口添加html
