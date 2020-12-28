@@ -20,6 +20,8 @@
   "homepage": "https://github.com/micro-kid/axios#readme",
   "dependencies": {
     "axios": "^0.21.1",
+    "codemirror": "^5.59.0",
+    "crypto-js": "^4.0.0",
     "qs": "^6.9.4"
   },
   "devDependencies": {

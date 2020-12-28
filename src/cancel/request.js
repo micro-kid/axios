@@ -1,11 +1,9 @@
 import axios from 'axios'
 import qs from 'qs'
 
-// 设置baseURL，判断当前环境是否为生产环境，若不是需设置自己的apiURL
-let baseURL = process.env.NODE_ENV !== 'production' ? '/' : '/'
 let config = {
-  baseURL,
-  timeout: 60 * 1000 // 请求超时时间
+  baseURL: '/',
+  timeout: 20 * 1000
 }
 
 const _axios = axios.create(config)

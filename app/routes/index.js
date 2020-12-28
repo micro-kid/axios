@@ -11,4 +11,13 @@ router.get('/cancel', async (ctx, next) => {
   ctx.body = {}
 })
 
+router.post('/interceptor', async (ctx, next) => {
+  // 原样返回
+  ctx.body = {
+    code: 200,
+    data: ctx.request.body.body,
+    message: '获取成功'
+  }
+})
+
 module.exports = router
